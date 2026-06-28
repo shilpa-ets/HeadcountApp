@@ -1,0 +1,9 @@
+dotenv
+streamlit
+openai
+streamlit_option_menu
+dotenv
+python-docx
+time
+datetime
+openpyxl
