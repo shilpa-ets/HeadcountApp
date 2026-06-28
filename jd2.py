@@ -12,7 +12,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 from process_flow import show_process_flow
-from send_email import send_jd_email
+# from send_email import send_jd_email
 
 
 from io import BytesIO
@@ -306,34 +306,37 @@ def submit_request_dialog():
         # send_hiring_request_email(..
         
         # ✅ SEND EMAIL AFTER SAVE
-        try:
-            send_jd_email(
-                docx_path=doc_path,
-                recipient_email="shjoshi@ets.org",
-                subject=f"JD Generated - {next_req_id}",
-                body=f"""Hello,
+        # try:
+        #     send_jd_email(
+        #         docx_path=doc_path,
+        #         recipient_email="shjoshi@ets.org",
+        #         subject=f"JD Generated - {next_req_id}",
+        #         body=f"""Hello,
         
-        The JD for request ID {next_req_id} has been generated.
+        # The JD for request ID {next_req_id} has been generated.
         
-        Job Title: {req_job_title}
-        Business Unit: {business_unit}
+        # Job Title: {req_job_title}
+        # Business Unit: {business_unit}
         
-        Regards,
-        JD Generator App"""
-            )
+        # Regards,
+        # JD Generator App"""
+        #     )
         
-            st.success(
-                f"{next_req_id} submitted for BU Review and emailed successfully."
-            )
+        #     st.success(
+        #         f"{next_req_id} submitted for BU Review and emailed successfully."
+        #     )
         
-        except Exception as e:
-            st.warning(
-                f"{next_req_id} submitted for BU Review, but email failed."
-            )
-            st.error(str(e))
+        # except Exception as e:
+        #     st.warning(
+        #         f"{next_req_id} submitted for BU Review, but email failed."
+        #     )
+        #     st.error(str(e))
 
         st.session_state.show_submit_dialog = False
-
+        st.success(
+                f"{next_req_id} submitted for BU Review successfully."
+            )
+        
         # =====================================================
         # DOWNLOAD JD AFTER SUBMISSION
         # =====================================================
