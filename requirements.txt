@@ -4,6 +4,5 @@ openai
 streamlit_option_menu
 dotenv
 python-docx
-time
 datetime
-openpyxl
+openpyxl>=3.1.0
