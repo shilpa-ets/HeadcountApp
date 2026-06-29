@@ -1,5 +1,5 @@
 import streamlit as st
-import process_flow
+from process_flow import show_process_flow
 
 def hide_streamlit_toolbar():
     st.markdown("""
