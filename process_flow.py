@@ -6,7 +6,6 @@ def show_process_flow(current_step=1):
         "Generate\nJD",
         "Submit\nRequest",
         "BU SLT\nReview & Approval",
-        "Request\nSubmitted to HR",
         "People\nProcess\nReview",
         "HRBP Review",
         "Division\nFinance\nReview",
