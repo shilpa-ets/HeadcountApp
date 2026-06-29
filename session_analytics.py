@@ -803,7 +803,7 @@ def render_process_signals(metrics, step_wait_df, distribution_df):
 # =========================================================
 # MAIN FUNCTION CALLED FROM app2.py
 # =========================================================
-def show_session_analytics():
+def show():
     apply_page_style()
 
     try:
