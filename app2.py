@@ -207,7 +207,7 @@ elif page == "Submit":
 
 elif page == "SLT Review":
     show_process_flow(current_step=3)
-    st.header("SLT Review")
+    st.header("BU Review")
 
 elif page == "People Process Review":
     show_process_flow(current_step=4)
