@@ -569,8 +569,9 @@ def render_step_wait_time(step_wait_df):
 
 def render_request_distribution(distribution_df):
     """
-    Donut chart like the screenshot.
+    Compact donut chart like the screenshot.
     Uses Altair, not HTML.
+    Sized to stay inside the Request Distribution card.
     """
     if distribution_df.empty:
         st.info("No request distribution data available.")
@@ -610,9 +611,10 @@ def render_request_distribution(distribution_df):
         "#999999"
     ]
 
+    # Slightly smaller donut so it stays inside the card
     donut = (
         alt.Chart(plot_df)
-        .mark_arc(innerRadius=70, outerRadius=120)
+        .mark_arc(innerRadius=50, outerRadius=95)
         .encode(
             theta=alt.Theta("Count:Q"),
             color=alt.Color(
@@ -626,33 +628,15 @@ def render_request_distribution(distribution_df):
                 alt.Tooltip("Percent:Q", title="Percent")
             ]
         )
-        .properties(width=270, height=270)
+        .properties(width=210, height=230)
     )
 
-    legend = (
-        alt.Chart(plot_df)
-        .mark_text(
-            align="left",
-            baseline="middle",
-            fontSize=15,
-            color="#062B4F"
-        )
-        .encode(
-            y=alt.Y(
-                "Status:N",
-                sort=color_domain,
-                axis=None
-            ),
-            text=alt.Text("LegendLabel:N")
-        )
-        .properties(width=260, height=210)
-    )
-
+    # Small colored dots for legend
     legend_points = (
         alt.Chart(plot_df)
         .mark_point(
             filled=True,
-            size=130
+            size=95
         )
         .encode(
             y=alt.Y(
@@ -666,18 +650,43 @@ def render_request_distribution(distribution_df):
                 legend=None
             )
         )
-        .properties(width=20, height=210)
+        .properties(width=18, height=170)
+    )
+
+    # Compact legend text
+    legend_text = (
+        alt.Chart(plot_df)
+        .mark_text(
+            align="left",
+            baseline="middle",
+            fontSize=13,
+            color="#062B4F"
+        )
+        .encode(
+            y=alt.Y(
+                "Status:N",
+                sort=color_domain,
+                axis=None
+            ),
+            text=alt.Text("LegendLabel:N")
+        )
+        .properties(width=210, height=170)
     )
 
     combined = alt.hconcat(
         donut,
-        alt.hconcat(legend_points, legend, spacing=6),
-        spacing=20
+        alt.hconcat(
+            legend_points,
+            legend_text,
+            spacing=0
+        ),
+        spacing=0
     ).configure_view(
         strokeWidth=0
     )
 
-    st.altair_chart(combined, use_container_width=True)
+    # Important: use_container_width=False prevents Altair from stretching too wide
+    st.altair_chart(combined, use_container_width=False)
 
 
 def render_weekly_throughput(weekly_df):
@@ -803,7 +812,7 @@ def render_process_signals(metrics, step_wait_df, distribution_df):
 # =========================================================
 # MAIN FUNCTION CALLED FROM app2.py
 # =========================================================
-def show():
+def show_session_analytics():
     apply_page_style()
 
     try:
@@ -934,7 +943,7 @@ def show():
 
     with bottom_right_col:
         with st.container(border=True):
-            signal_title_col, signal_badge_col = st.columns([4, 1])
+            signal_title_col, signal_badge_col = st.columns([3, 1.4])
 
             with signal_title_col:
                 st.subheader("Process Signals")
