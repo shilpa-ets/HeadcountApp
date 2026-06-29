@@ -1,4 +1,5 @@
 import streamlit as st
+import process_flow
 
 def hide_streamlit_toolbar():
     st.markdown("""
@@ -109,7 +110,7 @@ with st.sidebar:
     pages = {
         "🏠 Home": "Home",
         "📝 Submit a Request": "Submit",
-        "👥 BU SLT Review": "SLT Review",
+        "👥 BU Review": "SLT Review",
         "📖 People Process Review": "People Process Review",
         "📖 HRBP Review": "HRBP Review",
         "📖 Division Finance Review": "Comp Review",
@@ -204,25 +205,28 @@ elif page == "Submit":
     import jd2
     jd2.show()
 
-elif page == "My Requests":
-    st.header("My Requests")
-
 elif page == "SLT Review":
+    show_process_flow(current_step=3)
     st.header("SLT Review")
 
 elif page == "People Process Review":
+    show_process_flow(current_step=4)
     st.header("People Process Review")
 
 elif page == "HRBP Review":
+    show_process_flow(current_step=5)
     st.header("HRBP Review")
 
 elif page == "Division Finance Review":
+    show_process_flow(current_step=6)
     st.header("Division Finance Review")
 
 elif page == "HRTA Review":
+    show_process_flow(current_step=7)
     st.header("HRTA Review")
 
 elif page == "Senior Leadership Review":
+    show_process_flow(current_step=8)
     st.header("Senior Leadership Review")
 
 elif page == "Session Analytics":
