@@ -31,7 +31,7 @@ def show():
 
     st.subheader("Actions")
     
-    shilpa_df_edit = shilpa_df[shilpa_df["WorkFlowLevel"] == 2].copy()
+    shilpa_df_edit = shilpa_df[shilpa_df["WorkFlowLevel"] == 3].copy()
 
     for _, row in shilpa_df_edit.iterrows():
         c1, c2 = st.columns([5, 1])
