@@ -113,7 +113,7 @@ with st.sidebar:
         "👥 BU Review": "SLT Review",
         "📖 People Process Review": "People Process Review",
         "📖 HRBP Review": "HRBP Review",
-        "📖 Division Finance Review": "Comp Review",
+        "📖 Division Finance Review": "Division Finance Review",
         "📖 HRTA Review": "HRTA Review",
         "📖 Senior Leadership Review": "Senior Leadership Review",
         "📊 Session Analytics": "Session Analytics",
