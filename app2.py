@@ -226,7 +226,8 @@ elif page == "Senior Leadership Review":
     st.header("Senior Leadership Review")
 
 elif page == "Session Analytics":
-    st.header("Session Analytics")
+    import session_analytics
+    session_analytics.show()
 
 elif page == "BU Settings":
     st.header("BU Settings")
